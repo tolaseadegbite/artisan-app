@@ -46,7 +46,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -72,7 +72,7 @@ group :test do
 end
 gem "cssbundling-rails"
 gem "devise", "~> 4.8", ">= 4.8.0"
-gem "friendly_id", "~> 5.4"
+# gem "friendly_id", "~> 5.4"
 gem "jsbundling-rails"
 gem "madmin"
 gem "name_of_person", "~> 1.1"
@@ -86,3 +86,6 @@ gem "sidekiq", "~> 6.2"
 gem "sitemap_generator", "~> 6.1"
 gem "whenever", require: false
 gem "responders", github: "heartcombo/responders", branch: "main"
+gem 'rails_admin', '~> 3.0'
+gem "sassc-rails"
+gem 'aws-sdk-s3'

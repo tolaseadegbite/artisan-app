@@ -3,7 +3,11 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import "@hotwired/turbo-rails"
+import { Turbo } from "@hotwired/turbo-rails"
+Turbo.session.drive = false
+
+// import "@hotwired/turbo-rails"
+
 require("@rails/activestorage").start()
 //require("trix")
 //require("@rails/actiontext")
@@ -12,6 +16,8 @@ require("@rails/ujs").start()
 
 import './channels/**/*_channel.js'
 import "./controllers"
+import "./custom/message.js"
+import "./direct_uploads.js"
 
 import * as bootstrap from "bootstrap"
 

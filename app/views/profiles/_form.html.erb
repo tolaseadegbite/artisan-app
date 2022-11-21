@@ -1,0 +1,77 @@
+<%= form_with(model: profile) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-3">
+          <%= form.select :artisan_id, Artisan.pluck(:name, :id), {include_blank: true}, {data: { controller: 'slim' }} %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :name, class: 'form-label' %>
+          <%= form.text_field :name, class: 'form-control' %>
+      </div>
+      
+      <div class="mb-3">
+        <%= form.label :company_email, class: 'form-label' %>
+          <%= form.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :phone, class: 'form-label' %>
+          <%= form.text_field :phone, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :about, class: 'form-label' %>
+          <%= form.text_area :about, class: 'form-control', rows: "10" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :image, class: 'form-label' %>
+          <%= form.file_field :image, direct_upload: true, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="mb-3">
+        <%= form.label :address, class: 'form-label' %>
+          <%= form.text_area :address, class: 'form-control', rows: "3" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :min_cost, class: 'form-label' %>
+          <%= form.number_field :min_cost, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :max_cost, class: 'form-label' %>
+          <%= form.number_field :max_cost, class: 'form-control' %>
+      </div>
+    </div>
+    <%= form.submit class: 'btn btn-primary mb-2' %>
+
+    <div class="mb-3">
+      <% if profile.persisted? %>
+        <div>
+          <%= link_to 'Delete profile', profile, method: :delete, class: "btn btn-danger form-control", data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if profile.persisted? %>
+      <%= link_to "Cancel", profile, class: "btn btn-secondary form-control" %>
+    <% else %>
+      <%= link_to "Cancel", profiles_path, class: "btn btn-secondary form-control" %>
+    <% end %>
+  </div>
+<% end %>

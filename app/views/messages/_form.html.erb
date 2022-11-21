@@ -1,0 +1,15 @@
+<%= form_with(model: [profile, profile.messages.build]) do |form| %>
+
+    <% if !parent.nil? %>
+      <%= form.hidden_field :parent_id %>
+    <% end %>
+
+    <div class="mb-3">
+        <%= form.text_area :content, class: "form-control", placeholder: "Type your message content in here" %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.submit "Submit message", class: "btn btn-primary" %>
+    </div>
+
+<% end %>

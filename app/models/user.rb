@@ -5,8 +5,10 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_person_name
-  has_noticed_notifications
+  # has_noticed_notifications
 
-  has_many :notifications, as: :recipient, dependent: :destroy
+  # has_many :notifications, as: :recipient, dependent: :destroy
   has_many :services
+  has_many :profiles, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end

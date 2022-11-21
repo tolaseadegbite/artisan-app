@@ -1,0 +1,21 @@
+<article>
+    <p><%= message.content %></p>
+    <small><%= message.user.name %></small>
+    <a href="#" class="message-form-display">Reply</a>
+    <div class="message-form">
+        <%= render partial: 'messages/form', locals: { profile: message.profile, parent: message } %>
+    </div>
+    <hr>
+    <div class="sub-messages">
+        <%= render message.messages.order(id: :desc) %>
+    </div>
+</article>
+
+<script>
+    document.querySelectorAll('message-form-display').forEach((el) => {
+        el.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            el.nextElementSibling.style = 'display: block;';
+        })
+    })
+</script>

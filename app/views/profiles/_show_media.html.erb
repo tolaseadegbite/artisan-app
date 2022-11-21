@@ -1,0 +1,12 @@
+<div class="d-flex mt-3">
+    <div class="flex-shrink-0">
+        <%= image_tag avatar_path(@profile.user, size: 200), height: 100, width: 100, class: "rounded" %>
+    </div>
+    <div class="flex-grow-1 ms-3">
+        <h3><%= @profile.name %> <%#= link_to "Edit profile", edit_profile_path(@profile) %></h3>
+        <p><%= @profile.artisan.name %></p>
+        <% if current_user && @profile.user == current_user %>
+            <p><%= link_to "Edit profile", edit_profile_path(@profile) %> | <%= link_to "Delete", @profile, class: "text-danger", method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <% end %>
+    </div>
+</div>

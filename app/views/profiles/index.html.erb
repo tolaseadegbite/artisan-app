@@ -1,0 +1,43 @@
+<div class="artisan mb-4">
+  <% Artisan.all.each do |a| %>
+    <%= link_to a.name, profiles_path(artisan: a.name), class: "btn btn-secondary btn-sm mb-2" %>
+  <% end %>
+</div>
+
+<h1 class="current-artisan"><%= params[:artisan] %></h1>
+<% if @profiles.count == 0 %>
+  <h2 class="text-info">There are no profiles available for "<%= params[:artisan] %>"</h2>
+<% else %>
+  <div class="row">
+    <% @profiles.each do |profile| %>
+      <div class="col-md-9 mb-4">
+        <div class="row">
+          <div class="col-md-8">
+            <%#= link_to (image_tag profile.image.variant(resize_to_limit: [600, 300])), profile %>
+            <%= image_tag(profile.image, style: "width: 100%") %>
+          </div>
+
+          <div class="col-md-4">
+            <div class="flex-grow-1 ms-3">
+              <h5><%= link_to profile.name, profile, class: "index-link" %></h5>
+              <p><%= profile.about.truncate(200) %></p>
+              <p><%= link_to "Read more", profile, class: "text-success float-end" %></p>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="send-message">
+          <%= mail_to profile.email, "Send Message", class: "btn btn-success form-control" %>
+        </div>
+
+        <div class="address">
+          <p class="text-muted"><small>
+            <%= simple_format profile.address %>
+          </small></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
