@@ -1,0 +1,19 @@
+<br/>
+<h3>Related Profiles</h3>
+<hr class="profile-hr" />
+<br/>
+
+<div class="row">
+    <div class="col-md-12">
+        <% @related_profiles.limit(2).each do |profile| %>
+            <div class="card random-card mb-3">
+            <%= image_tag(profile.image, style: "width: 100%", class: "card-img-top", alt: "profile-image") %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= profile.name %></h5>
+                    <p class="card-text"><%= profile.about.truncate(150) %></p>
+                    <p><%= link_to "Read more", profile, class: "text-success float-end" %></p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

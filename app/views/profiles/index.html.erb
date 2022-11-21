@@ -4,6 +4,8 @@
   <% end %>
 </div>
 
+<%= render 'profiles/slider' %>
+
 <h1 class="current-artisan"><%= params[:artisan] %></h1>
 <% if @profiles.count == 0 %>
   <h2 class="text-info">There are no profiles available for "<%= params[:artisan] %>"</h2>

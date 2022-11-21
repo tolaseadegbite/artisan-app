@@ -30,5 +30,9 @@
         <%= mail_to @profile.email, "Send Message", class: "btn btn-success form-control" %>
       <% end %>
     </div>
+
+    <div class="random">
+      <%= render 'profiles/random_profiles' %>
+    </div>
   </div>
 </div>
