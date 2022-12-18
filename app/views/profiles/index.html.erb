@@ -31,7 +31,11 @@
 
       <div class="col-md-3">
         <div class="send-message">
-          <%= mail_to profile.email, "Send Message", class: "btn btn-success form-control" %>
+          <% if !current_user %>
+            <p><%= link_to "Log in", new_user_session_path %> to see details</p>
+          <% else %>
+            <%= mail_to profile.email, "Send Message", class: "btn btn-success form-control" %>
+          <% end %>
         </div>
 
         <div class="address">
