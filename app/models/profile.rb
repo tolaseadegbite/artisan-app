@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-    validates :about, length: { minimum: 300 }
+    validates :about, length: { minimum: 30 }
     validates :artisan_id, :name, :image, :email, :phone, :min_cost, :max_cost, :address, presence: true
     belongs_to :user
     belongs_to :artisan
