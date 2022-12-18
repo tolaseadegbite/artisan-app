@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
+  get '/privacy', to: 'home#privacy'
+  get '/home', to: 'home#index'
   
 authenticate :user, lambda { |u| u.admin? } do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
